@@ -1,3 +1,5 @@
+import { darken } from 'polished';
+
 // COLORS
 export const white = "#F8F6F1";
 export const black = "#010304";
@@ -13,7 +15,9 @@ export const color2rgb = "119, 172, 162";
 export const color3rgb = "157, 190, 187";
 export const color4rgb = "244, 233, 205";
 
+export const fontColor = darken(0.2, color4);
+
 // SPACING
-export const small = "2.5rem";
+export const small = "3rem";
 export const medium = "5rem";
 export const large = "8rem";

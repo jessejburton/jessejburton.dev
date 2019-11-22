@@ -27,12 +27,18 @@ const Home = () => {
       <StyledSectionContent>
         <animated.h1 className="title" style={title}>Hello, my name is <strong>Jesse J Burton</strong>. <br />I'm a fullstack web developer.</animated.h1>
         <animated.div className="centered" style={subtitle}>
-          <Link to="/ui">
+          <Link to="/css-toggle">
             <Button>
               Let's build the internet together.
             </Button>
           </Link>
         </animated.div>
+        <animated.div className="centered skip" style={subtitle}>
+          <Link to="/menu">
+            skip the tour
+          </Link>
+        </animated.div>
+
       </StyledSectionContent>
     </Layout>
   )
@@ -42,6 +48,7 @@ export default Home
 
 const StyledSectionContent = styled.div`
   max-width: 110rem;
+  font-family: 'Raleway', sans-serif;
 
   h1 {
     font-weight: 500;
@@ -54,6 +61,19 @@ const StyledSectionContent = styled.div`
 
     strong {
       color: ${color3};
+    }
+  }
+
+  .skip a,
+  .skip a:link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    padding: 2rem;
+    font-size: 1.2rem;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 `;

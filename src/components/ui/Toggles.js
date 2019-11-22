@@ -39,6 +39,7 @@ const StyledToggles = styled.div`
   align-items: center;
   flex-direction: column;
   height: 100%;
+  font-family: 'Raleway', sans-serif;
 
   /* ALL TOGGLES */
   .toggle {
