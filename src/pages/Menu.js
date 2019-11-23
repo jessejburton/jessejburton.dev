@@ -10,11 +10,7 @@ import UIfx from 'uifx';
 
 const Home = () => {
 
-  const menuClickSound = new UIfx(menuClick,
-    {
-      volume: 0.9,
-      throttleMs: 50
-    });
+  const menuClickSound = new UIfx(menuClick);
 
   function onMenuHover() {
     menuClickSound.play(1);
@@ -25,11 +21,11 @@ const Home = () => {
       <StyledSectionContent>
         <div>
           <StyledNavigation>
-            <li onMouseEnter={onMenuHover}><Link to="about">About Me<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
-            <li onMouseEnter={onMenuHover}><Link to="projects">Projects<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
-            <li onMouseEnter={onMenuHover}><Link to="ui">UI Design<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
-            <li onMouseEnter={onMenuHover} onMouseEnter={onMenuHover}><Link to="ui">My Code<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
-            <li onMouseEnter={onMenuHover}><Link to="uses">My Setup<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
+            <li onMouseEnter={onMenuHover}><Link to="/menu">About Me<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
+            <li onMouseEnter={onMenuHover}><Link to="/menu">Projects<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
+            <li onMouseEnter={onMenuHover}><Link to="/menu">UI Design<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
+            <li onMouseEnter={onMenuHover} onMouseEnter={onMenuHover}><Link to="/menu">My Code<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
+            <li onMouseEnter={onMenuHover}><Link to="/menu">My Setup<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
           </StyledNavigation>
         </div>
       </StyledSectionContent>
@@ -38,6 +34,18 @@ const Home = () => {
 }
 
 export default Home
+
+const StyledSectionContent = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 50% 50%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+`;
 
 const StyledNavigation = styled.ul`
   margin: 0;
@@ -78,7 +86,6 @@ const StyledNavigation = styled.ul`
   a:hover svg {
     opacity: 0.9;
     transform: translate(0, -50%);
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
   }
 
   a:hover {
@@ -88,16 +95,6 @@ const StyledNavigation = styled.ul`
     border-top: 1px solid rgba(255,255,255,.4);
     border-bottom: 1px solid rgba(255,255,255,.4);
     border-left: 5px solid rgba(255,255,255,.6);
-    text-shadow: 0 0 8px rgba(255,255,255,0.6);
   }
 `;
 
-const StyledSectionContent = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  font-family: 'Raleway', sans-serif;
-  font-size: 2.8rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-`;

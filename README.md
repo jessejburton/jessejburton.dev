@@ -1,3 +1,8 @@
+# JESSEJBURTON.dev
+Github repository for my personal portfolio website. I am using it as a tool of practice, currently focusing on working with animations in React.
+
+## Standard Create React App Biolerplate Read.me Below.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

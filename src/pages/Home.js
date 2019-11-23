@@ -1,10 +1,10 @@
 import React from "react"
 import { useSpring, animated } from 'react-spring'
-import Layout from '../layout/Layout';
-import styled from 'styled-components';
-import { medium, black, color3, color4 } from '../theme/theme';
-import { Button } from '../components/ui/Button';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+import { medium, black, color3, color4 } from '../theme/theme'
+import { Button } from '../components/ui/Button'
+import { Link } from 'react-router-dom'
+import Layout from '../layout/Layout'
 
 const Home = () => {
 
@@ -23,7 +23,7 @@ const Home = () => {
   });
 
   return (
-    <Layout bgColor={black} fontColor={color4}>
+    <Layout>
       <StyledSectionContent>
         <animated.h1 className="title" style={title}>Hello, my name is <strong>Jesse J Burton</strong>. <br />I'm a fullstack web developer.</animated.h1>
         <animated.div className="centered" style={subtitle}>
@@ -38,7 +38,6 @@ const Home = () => {
             skip the tour
           </Link>
         </animated.div>
-
       </StyledSectionContent>
     </Layout>
   )

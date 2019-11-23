@@ -67,7 +67,7 @@ const CSSToggle = () => {
             </a>
           </div>
           <div className="back">
-            <Link to="/">
+            <Link to="/menu">
               <FontAwesomeIcon icon={faAngleDoubleLeft} /> Backward
             </Link>
           </div>

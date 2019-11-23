@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Header = () => {
   return (
@@ -16,6 +16,7 @@ const StyledHeader = styled.header`
     grid-column-start: content;
     grid-column-end: content;
     position: relative;
+    z-index: 100;
 
     &::after {
       content: '';
@@ -37,6 +38,7 @@ const StyledHeader = styled.header`
       bottom: 4rem;
       left: 0;
       letter-spacing: 3px;
+      text-shadow: 0 0 3px rgba(255,255,255,0.6);
 
       span {
         font-weight: 300;
@@ -46,5 +48,5 @@ const StyledHeader = styled.header`
         transform: translate(-100%,110%);
         letter-spacing: 1px;
       }
-    }
+  }
 `;

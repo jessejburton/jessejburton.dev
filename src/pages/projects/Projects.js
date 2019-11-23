@@ -7,7 +7,6 @@ import { medium, white, color4, color4rgb, color1 } from '../../theme/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWordpress, faReact } from '@fortawesome/free-brands-svg-icons'
 import { faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
-import { blockStatement } from "@babel/types"
 
 const Projects = () => {
 
