@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { AnimatedSwitch } from 'react-router-transition'
 import Home from './pages/Home'
+import Menu from './pages/Menu'
 import CSSToggle from './pages/ui/CSSToggle'
 import PhysicsCarousel from './pages/ui/PhysicsCarousel'
-import Websites from './pages/websites/Websites'
+import Projects from './pages/projects/Projects'
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/css-toggle" exact component={CSSToggle} />
         <Route path="/physics-based-carousel" exact component={PhysicsCarousel} />
-        <Route path="/websites" exact component={Websites} />
+        <Route path="/projects" exact component={Projects} />
+        <Route path="/menu" exact component={Menu} />
       </AnimatedSwitch>
     </Router>
   );
