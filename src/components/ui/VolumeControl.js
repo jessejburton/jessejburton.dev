@@ -1,43 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { white } from '../../theme/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVolumeUp, faVolumeMute } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
+import bgMusic from '../../sounds/bg-music.mp3'
+import Sound from 'react-sound'
 
 export const VolumeControl = ({ volume, dispatch }) => {
-
-  const [showControls, setShowControls] = useState(false);
-
-  function hideControls() {
-    setTimeout(() => setShowControls(false), 2000);
-  }
-
   return (
-    <StyledVolumeControl
-      onMouseEnter={() => setShowControls(true)}
-      onMouseOut={hideControls}>
+    <StyledVolumeControl>
       {
-        volume === 0 ? <FontAwesomeIcon icon={faVolumeMute} /> : <FontAwesomeIcon icon={faVolumeUp} onClick={() => dispatch({ type: 'MUTE_VOLUME' })} />
+        volume === 0 ? <FontAwesomeIcon icon={faVolumeMute} onClick={() => dispatch({ type: 'UNMUTE_VOLUME' })} /> : <FontAwesomeIcon icon={faVolumeUp} onClick={() => dispatch({ type: 'MUTE_VOLUME' })} />
       }
-      {showControls &&
-        <StyledSlider>
-          <Slider
-            min={0}
-            max={1}
-            step={0.1}
-            value={volume}
-            orientation='vertical'
-            tooltip={false}
-            onChange={(value) => dispatch({
-              type: 'SET_VOLUME',
-              value: value
-            })}
-          />
-        </StyledSlider>
-      }
+      <StyledSlider>
+        <Slider
+          min={0}
+          max={1}
+          step={0.1}
+          value={volume}
+          orientation='vertical'
+          tooltip={false}
+          onChange={(value) => dispatch({
+            type: 'SET_VOLUME',
+            value: value
+          })}
+        />
+      </StyledSlider>
+      <Sound
+        url={bgMusic}
+        playStatus="PLAYING"
+        volume={volume * 100}
+      />
     </StyledVolumeControl>
   )
 }
