@@ -1,7 +1,7 @@
 import React from "react"
 import { useSpring, animated } from 'react-spring'
 import styled from 'styled-components'
-import { medium, black, color3, color4 } from '../theme/theme'
+import { medium, color3 } from '../theme/theme'
 import { Button } from '../components/ui/Button'
 import { Link } from 'react-router-dom'
 import Layout from '../layout/Layout'

@@ -2,11 +2,9 @@ import React from "react"
 import { useSpring, animated } from 'react-spring'
 import Layout from '../../layout/Layout'
 import styled from 'styled-components'
-import { darken } from 'polished'
-import { medium, white, color4, color4rgb, color1 } from '../../theme/theme'
+import { white, color4, color4rgb, color1 } from '../../theme/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWordpress, faReact } from '@fortawesome/free-brands-svg-icons'
-import { faAngleDoubleLeft, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
 const Projects = () => {
 

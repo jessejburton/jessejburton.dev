@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { black, white, fontColor, color4 } from '../theme/theme'
+import { black, white } from '../theme/theme'
 import Header from './Header'
 import Footer from './Footer'
 import bgImage from '../images/main-menu-bg.jpg'

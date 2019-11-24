@@ -2,18 +2,18 @@ import React, { useState } from "react"
 import Layout from '../layout/Layout'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { color4Dark } from '../theme/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 import menuClick from '../sounds/menu-click.wav'
 import UIfx from 'uifx';
+import { connect } from 'react-redux'
 
-const Home = () => {
+const Home = ({ volume }) => {
 
-  const menuClickSound = new UIfx(menuClick);
+  const menuClickSound = new UIfx(menuClick, { throttleMs: 75 });
 
   function onMenuHover() {
-    menuClickSound.play(1);
+    menuClickSound.play(parseFloat(volume));
   }
 
   return (
@@ -33,7 +33,10 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = (state) => ({
+  volume: state.audioSettings.volume
+})
+export default connect(mapStateToProps)(Home);
 
 const StyledSectionContent = styled.div`
   width: 100%;

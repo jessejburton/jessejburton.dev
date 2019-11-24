@@ -5,13 +5,14 @@ import { faGithub, faFacebook, faTwitter, faInstagram } from '@fortawesome/free-
 import VolumeControl from '../components/ui/VolumeControl'
 import iconTick from '../sounds/tick.mp3'
 import UIfx from 'uifx';
+import { connect } from 'react-redux';
 
-export const Footer = () => {
+export const Footer = ({ volume }) => {
 
-  const iconTickSound = new UIfx(iconTick);
+  const iconTickSound = new UIfx(iconTick, { throttleMs: 75 });
 
   function onIconHover() {
-    iconTickSound.play(0.5);
+    iconTickSound.play(parseFloat(volume));
   }
 
   return (
@@ -45,7 +46,10 @@ export const Footer = () => {
   )
 }
 
-export default Footer
+const mapStateToProps = (state) => ({
+  volume: state.audioSettings.volume
+});
+export default connect(mapStateToProps)(Footer);
 
 const StyledFooter = styled.footer`
     grid-area: footer;
