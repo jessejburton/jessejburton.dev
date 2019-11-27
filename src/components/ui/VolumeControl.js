@@ -30,7 +30,7 @@ export const VolumeControl = ({ volume, dispatch }) => {
       </StyledSlider>
       <Sound
         url={bgMusic}
-        playStatus="PLAYING"
+        playStatus="PAUSED"
         volume={volume * 100}
       />
     </StyledVolumeControl>
