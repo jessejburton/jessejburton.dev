@@ -1,19 +1,31 @@
-import React, { useState } from "react"
+import React, { useRef } from "react"
 import Layout from '../layout/Layout'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 import menuClick from '../sounds/menu-click.wav'
+import menuSelect from '../sounds/menuSelect.wav'
 import UIfx from 'uifx';
 import { connect } from 'react-redux'
+import { gsap, Power2, Linear } from 'gsap'
 
 const Home = ({ volume }) => {
 
   const menuClickSound = new UIfx(menuClick, { throttleMs: 75 });
+  const menuSelectSound = new UIfx(menuSelect, { throttleMs: 75 });
+
+  let menuButton = useRef(null);
 
   function onMenuHover() {
     menuClickSound.play(parseFloat(volume));
+  }
+
+  function handleMenuClick(e) {
+    menuSelectSound.play(parseFloat(volume));
+
+
+
   }
 
   return (
@@ -21,15 +33,25 @@ const Home = ({ volume }) => {
       <StyledSectionContent>
         <div>
           <StyledNavigation>
-            <li onMouseEnter={onMenuHover}><Link to="/menu">About Me<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
-            <li onMouseEnter={onMenuHover}><Link to="/menu">Projects<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
-            <li onMouseEnter={onMenuHover}><Link to="/menu">UI Design<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
-            <li onMouseEnter={onMenuHover} onMouseEnter={onMenuHover}><Link to="/menu">My Code<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
-            <li onMouseEnter={onMenuHover}><Link to="/menu">My Setup<FontAwesomeIcon icon={faArrowCircleRight} /></Link></li>
+            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
+              <Link to="/menu">About Me<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
+            </li>
+            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
+              <Link to="/menu">Projects<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
+            </li>
+            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
+              <Link to="/menu">UI Design<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
+            </li>
+            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
+              <Link to="/menu">My Code<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
+            </li>
+            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
+              <Link to="/menu">My Setup<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
+            </li>
           </StyledNavigation>
         </div>
-      </StyledSectionContent>
-    </Layout>
+      </StyledSectionContent >
+    </Layout >
   )
 }
 
