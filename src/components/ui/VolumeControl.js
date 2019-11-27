@@ -8,6 +8,7 @@ import 'react-rangeslider/lib/index.css'
 import bgMusic from '../../sounds/bg-music.mp3'
 import Sound from 'react-sound'
 
+
 export const VolumeControl = ({ volume, dispatch }) => {
   return (
     <StyledVolumeControl>

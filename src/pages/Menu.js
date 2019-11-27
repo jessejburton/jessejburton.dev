@@ -1,64 +1,68 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import Layout from '../layout/Layout'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
-import menuClick from '../sounds/menu-click.wav'
-import menuSelect from '../sounds/menuSelect.wav'
-import UIfx from 'uifx';
-import { connect } from 'react-redux'
-import { gsap, Power2, Linear } from 'gsap'
+import MenuItem from '../components/ui/MenuItem'
 
-const Home = ({ volume }) => {
+const Home = () => {
 
-  const menuClickSound = new UIfx(menuClick, { throttleMs: 75 });
-  const menuSelectSound = new UIfx(menuSelect, { throttleMs: 75 });
+  const [infoText, setInfoText] = useState("Find out more about who I am");
 
-  let menuButton = useRef(null);
-
-  function onMenuHover() {
-    menuClickSound.play(parseFloat(volume));
-  }
-
-  function handleMenuClick(e) {
-    menuSelectSound.play(parseFloat(volume));
-
-
-
+  const handleMenuHover = (message) => {
+    setInfoText(message);
   }
 
   return (
     <Layout>
       <StyledSectionContent>
-        <div>
+        <div className="menu">
           <StyledNavigation>
-            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
-              <Link to="/menu">About Me<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
-            </li>
-            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
-              <Link to="/menu">Projects<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
-            </li>
-            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
-              <Link to="/menu">UI Design<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
-            </li>
-            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
-              <Link to="/menu">My Code<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
-            </li>
-            <li onMouseEnter={onMenuHover} onClick={handleMenuClick}>
-              <Link to="/menu">My Setup<FontAwesomeIcon icon={faArrowCircleRight} /></Link>
-            </li>
+            <MenuItem
+              onMenuHover={handleMenuHover}
+              link="/about"
+              message="Some more information about who I am"
+            >
+              About Me
+            </MenuItem>
+            <MenuItem
+              onMenuHover={handleMenuHover}
+              link="/projects"
+              message="See a selection of projects I am working on"
+            >
+              Projects
+            </MenuItem>
+            <MenuItem
+              onMenuHover={handleMenuHover}
+              link="/projects"
+              message="Some of my user interface design work"
+            >
+              UI Design
+            </MenuItem>
+            <MenuItem
+              onMenuHover={handleMenuHover}
+              link="/projects"
+              message="Writings about how I like to write code"
+            >
+              My Code
+            </MenuItem>
+            <MenuItem
+              onMenuHover={handleMenuHover}
+              link="/projects"
+              message="The current tools, software, hardware etc. that I use"
+            >
+              My Setup
+            </MenuItem>
           </StyledNavigation>
         </div>
-      </StyledSectionContent >
-    </Layout >
+        <div>
+          <div className="info-text">{infoText}</div>
+        </div>
+      </StyledSectionContent>
+
+    </Layout>
   )
 }
 
-const mapStateToProps = (state) => ({
-  volume: state.audioSettings.volume
-})
-export default connect(mapStateToProps)(Home);
+export default Home;
 
 const StyledSectionContent = styled.div`
   width: 100%;
@@ -70,6 +74,26 @@ const StyledSectionContent = styled.div`
   font-size: 2.8rem;
   font-weight: 500;
   letter-spacing: 1px;
+  position: relative;
+
+  .menu {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+
+    .info-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-family: 'Raleway', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      padding: 1rem 0;
+      transition: all .3s ease;
+    }
+  }
+
 `;
 
 const StyledNavigation = styled.ul`
